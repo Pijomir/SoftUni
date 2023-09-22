@@ -5,7 +5,6 @@ function triplesOfLatinLetters(n) {
             let secondLetter = String.fromCharCode(97 + j)
             for (let k = 0; k < n; k++) {
                 let thirdLetter = String.fromCharCode(97 + k);
-
                 console.log(`${firstLetter}${secondLetter}${thirdLetter}`);
             }
         }
