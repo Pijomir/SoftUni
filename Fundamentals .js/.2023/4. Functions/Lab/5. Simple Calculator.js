@@ -9,7 +9,12 @@ function createSImpleCalculator(num1, num2, operator) {
         case 'add': return add(num1, num2);
         case 'subtract': return subtract(num1, num2);
     }
-} 
+}
+
+// function createSimpleCalculator(n1, n2, operator) {
+//     let operators = {multiply: (a, b) => a * b, divide: (a, b) => a / b, add: (a, b) => a + b, subtract: (a, b) => a - b};
+//     console.log(operators[operator](n1, n2));
+// }
 
 console.log(createSImpleCalculator(5, 5, 'multiply'));
 
