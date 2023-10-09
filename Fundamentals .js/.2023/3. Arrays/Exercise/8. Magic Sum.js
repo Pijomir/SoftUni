@@ -8,4 +8,4 @@ function findMagicSum(arr, num) {
     }
 }
 
-findMagicSum([1, 7, 6, 2, 19, 23], 8);
+findMagicSum([1], 1);
