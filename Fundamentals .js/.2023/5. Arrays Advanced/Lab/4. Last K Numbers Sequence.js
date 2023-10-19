@@ -4,7 +4,7 @@ function printLastKNumbersSequence(n, k) {
     for (let i = 1; i < n; i++) {
         let startingPosition = Math.max(0, i - k);
         let lastEl = result.slice(startingPosition);
-        let sum = lastEl.reduce((a, b) => a + b);
+        let sum = lastEl.reduce((a, b) => a + b, 0);
         
         result.push(sum);        
     }
