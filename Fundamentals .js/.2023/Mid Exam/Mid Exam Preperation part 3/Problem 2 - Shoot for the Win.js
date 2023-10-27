@@ -1,12 +1,8 @@
 function keepTrackOfShotTargets(input) {
     let shotTargets = 0;
     let targets = input.shift().split(' ').map(Number);
-    for (let i = 0; i < input.length; i++) {
-        if (input[i] === 'End') {
-            break;
-        }
-
-        let currentIndex = Number(input[i]);
+    while (input[0] !== 'End') {
+        let currentIndex = Number(input.shift());
         let currentTarget = targets[currentIndex];
         if (currentIndex >= 0 && currentIndex < targets.length) {
             targets[currentIndex] = -1;

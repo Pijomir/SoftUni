@@ -1,6 +1,6 @@
 function findFiveTopNumbers(singleLine) {
     let sequence = singleLine.split(' ').map(Number);
-    let theAverage = sequence.reduce((a, b) => a + b) / sequence.length;
+    let theAverage = sequence.reduce((a, b) => a + b, 0) / sequence.length;
     let biggerThanAverage = sequence.filter(a => a > theAverage).sort((a, b) => b - a);
     let result = biggerThanAverage.slice(0, 5);
     console.log(result.length > 0 ? result.join(' ') : 'No');
