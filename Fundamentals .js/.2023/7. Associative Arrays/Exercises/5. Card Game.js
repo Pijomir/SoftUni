@@ -22,7 +22,7 @@ function playCardGame(input) {
                 cardsValue += 10 * types[card[2]];
             } else {
                 let [power, type] = card.split('');
-                cardsValue += Number(power) > 1 && Number(power) < 11 ? Number(power) * types[type] : powers[power] * types[type];
+                cardsValue += Number(power) > 1 && Number(power) < 10 ? Number(power) * types[type] : powers[power] * types[type];
             }
         }
 
