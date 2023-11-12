@@ -2,10 +2,11 @@ function makeDictionary(input) {
     let dictionary = {};
     for (let line of input) {
         let currentWordAndDefinition = JSON.parse(line);
-        // let currentWord = Object.keys(currentWordAndDefinition)[0];
-        // let currentDefinition = Object.values(currentWordAndDefinition)[0];
-        let [currentWord, currentDefinition] = Object.entries(currentWordAndDefinition)[0];
-        dictionary[currentWord] = currentDefinition;
+        // let currentWord = Object.keys(currentWordAndDefinition)[0]; - вариант 1;
+        // let currentDefinition = Object.values(currentWordAndDefinition)[0]; - вариант 1;
+        // let [currentWord, currentDefinition] = Object.entries(currentWordAndDefinition)[0]; - вариант 2;
+        // dictionary[currentWord] = currentDefinition;
+        dictionary = Object.assign(dictionary, currentWordAndDefinition);
     }
 
     let sortedDictionary = Object.entries(dictionary).sort((a, b) => a[0].localeCompare(b[0]));

@@ -9,7 +9,7 @@ function manageGladiators(input) {
                 let [name, technique, skillLevel] = el.split(' -> ');
                 skillLevel = Number(skillLevel);
                 if (!gladiatorsList.hasOwnProperty(name)) {
-                    gladiatorsList[name] = { [technique]: skillLevel };
+                    gladiatorsList[name] = {[technique]: skillLevel};
                 } else {
                     if (gladiatorsList[name].hasOwnProperty(technique)) {
                         if (skillLevel < gladiatorsList[name][technique]) {
