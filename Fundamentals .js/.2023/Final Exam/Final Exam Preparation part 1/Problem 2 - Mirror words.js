@@ -1,17 +1,16 @@
 function checkForPairs([input]) {
-    let pairsPattern = /([@#]){1}(?<wordOne>[A-Za-z]{3,})\1{2}(?<wordTwo>[A-Za-z]{3,})\1{1}/g;
-    let allPairs = input.match(pairsPattern);
+    let pairsPattern = /([@#])(?<wordOne>[A-Za-z]{3,})\1{2}(?<wordTwo>[A-Za-z]{3,})\1/g;
+    let currentPair = pairsPattern.exec(input);
     let pairsCount = 0;
     let mirrorWords = [];
-    if (allPairs !== null) {
-        pairsCount = allPairs.length;
-        allPairs.forEach(pair => {
-            let match = pair.match(/([@#]){1}(?<wordOne>[A-Za-z]{3,})\1{2}(?<wordTwo>[A-Za-z]{3,})\1{1}/);
-            let { wordOne, wordTwo } = match.groups;
-            if (wordOne === wordTwo.split('').reverse().join('')) {
-                mirrorWords.push([wordOne, wordTwo]);
-            }
-        });
+    while(currentPair !== null) {
+        pairsCount++;
+        let {wordOne, wordTwo} = currentPair.groups;
+        if (wordOne === wordTwo.split('').reverse().join('')) {
+            mirrorWords.push(`${wordOne} <=> ${wordTwo}`);
+        }
+
+        currentPair = pairsPattern.exec(input);
     }
 
     console.log(pairsCount > 0 ? `${pairsCount} word pairs found!` : 'No word pairs found!');
@@ -19,8 +18,8 @@ function checkForPairs([input]) {
         console.log('No mirror words!');
     } else {
         console.log('The mirror words are:');
-        console.log(mirrorWords.map(a => a.join(' <=> ')).join(', '));
+        console.log(mirrorWords.join(', '));
     }
 }
 
-checkForPairs(['#lol#lol# @#God@@doG@# #abC@@Cba# @Xyu@#uyX#']);
+checkForPairs(['@mix#tix3dj#poOl##loOp#wl@@bong&song%4very$long@thong#Part##traP##@@leveL@@Level@##car#rac##tu@pack@@ckap@#rr#sAw##wAs#r#@w1r']);

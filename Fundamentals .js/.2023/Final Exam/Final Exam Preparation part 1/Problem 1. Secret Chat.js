@@ -1,44 +1,51 @@
 function revealSecretChar(input) {
     let message = input.shift();
-    while (input.length > 0) {
-        let currentLine = input.shift().split(':|:');
-        let currentCommand = currentLine.shift();
-        if (currentCommand === 'Reveal') {
-            console.log(`You have a new text message: ${message}`);
-            break;
-        }
-
+    let currentCommandLine = input.shift();
+    while (currentCommandLine !== 'Reveal') {
+        currentCommandLine = currentCommandLine.split(':|:');
+        let currentCommand = currentCommandLine.shift();
         switch (currentCommand) {
-            case 'InsertSpace': let [index] = currentLine;
+            case 'InsertSpace': let index = Number(currentCommandLine.shift());
                 let firstPart = message.slice(0, index);
                 let secondPart = message.slice(index);
                 message = firstPart + ' ' + secondPart;
                 console.log(message);
                 break;
-            case 'Reverse': let [theSubString] = currentLine;
+            case 'Reverse': let [theSubString] = currentCommandLine;
                 if (!message.includes(theSubString)) {
                     console.log('error');
                 } else {
-                    let reversedSubString = theSubString.split('').reverse().join('');
-                    message = message.replace(theSubString, reversedSubString);
+                    let lengthToBeCut = theSubString.length;
+                    let startIndex = message.indexOf(theSubString);
+                    let manipulatedMessage = message.split('');
+                    let reversedString = manipulatedMessage.splice(startIndex, lengthToBeCut).reverse().join('');
+                    message = manipulatedMessage.join('') + reversedString;
                     console.log(message);
                 }
+
                 break;
-            case 'ChangeAll': let [stringToReplace, replacement] = currentLine;
-                if (message.includes(stringToReplace)) {
-                    while (message.includes(stringToReplace)) {
-                        message = message.replace(stringToReplace, replacement)
-                    }
-                    console.log(message);
+            case 'ChangeAll': let [subStringToReplace, replacement] = currentCommandLine;
+                while(message.includes(subStringToReplace)) {
+                    message = message.replace(subStringToReplace, replacement);
                 }
+
+                console.log(message);
                 break;
         }
+
+        currentCommandLine = input.shift();
     }
+
+    console.log(`You have a new text message: ${message}`);
 }
 
 revealSecretChar([
-    'heVVodar!gniV',
-    'ChangeAll:|:V:|:l',
-    'Reverse:|:!gnil',
-    'InsertSpace:|:5',
-    'Reveal']);
+    'Hiware?uiy',
+    'ChangeAll:|:i:|:o',
+    'Reverse:|:?uoy',
+    'Reverse:|:jd',
+    'InsertSpace:|:3',
+    'InsertSpace:|:7',
+    'Reveal'
+]
+);
