@@ -10,9 +10,7 @@ function keepTrackOnPirates(input) {
             gold += cities[cityName].gold;
         }
 
-        cities[cityName] = {};
-        cities[cityName].population = population;
-        cities[cityName].gold = gold;
+        cities[cityName] = {population, gold};
         currentLine = input.shift();
     }
 

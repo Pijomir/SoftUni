@@ -1,0 +1,3 @@
+let test = '3'.toLowerCase();
+
+console.log(test);
