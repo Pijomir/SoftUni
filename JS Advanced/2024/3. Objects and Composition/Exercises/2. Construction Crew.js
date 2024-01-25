@@ -1,5 +1,5 @@
 function modifyAnObject(worker) {
-    if (worker.dizziness === true) {
+    if (worker.dizziness) {
         worker.levelOfHydrated += 0.1 * worker.weight * worker.experience;
         worker.dizziness = false;
     }

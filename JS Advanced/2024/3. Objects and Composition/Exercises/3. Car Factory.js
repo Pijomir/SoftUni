@@ -9,7 +9,7 @@ function manageCarFactory(order) {
     }
     car.carriage = {type: order.carriage, color: order.color};
     const wheelSize = order.wheelsize % 2 === 0 ? order.wheelsize - 1 : order.wheelsize;
-    car.wheels = [wheelSize, wheelSize, wheelSize, wheelSize];
+    car.wheels = new Array(4).fill(wheelSize);
 
     return car;
 }
