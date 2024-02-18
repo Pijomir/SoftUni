@@ -11,7 +11,7 @@ function solve() {
     const upcomingListElement = document.getElementById('upcoming-list');
     const finishedListElement = document.getElementById('finished-list');
     const clearBtnElement = document.getElementById('clear');
-    
+
     clearBtnElement.addEventListener('click', () => {
         finishedListElement.textContent = '';
     });
